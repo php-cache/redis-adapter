@@ -9,7 +9,7 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Cache\Adapter\PhpRedis;
+namespace Cache\Adapter\Redis;
 
 use Cache\Adapter\Common\AbstractCachePool;
 use Psr\Cache\CacheItemInterface;
@@ -17,7 +17,7 @@ use Psr\Cache\CacheItemInterface;
 /**
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>
  */
-class PhpRedisCachePool extends AbstractCachePool
+class RedisCachePool extends AbstractCachePool
 {
     /**
      * @type \Redis

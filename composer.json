@@ -1,5 +1,5 @@
 {
-    "name":              "cache/phpredis-adapter",
+    "name":              "cache/redis-adapter",
     "description":       "A PSR-6 cache implementation using Redis (PhpRedis). This implementation supports tags",
     "type":              "library",
     "license":           "MIT",
@@ -12,7 +12,7 @@
         "redis",
         "tag"
     ],
-    "homepage": "https://github.com/php-cache/phpredis-adapter",
+    "homepage": "https://github.com/php-cache/redis-adapter",
     "authors":
     [
         {
@@ -46,13 +46,13 @@
     "autoload":
     {
         "psr-4": {
-            "Cache\\Adapter\\PhpRedis\\": "src/"
+            "Cache\\Adapter\\Redis\\": "src/"
         }
     },
     "autoload-dev":
     {
         "psr-4": {
-            "Cache\\Adapter\\PhpRedis\\Tests\\": "tests/"
+            "Cache\\Adapter\\Redis\\Tests\\": "tests/"
         }
     }
 }

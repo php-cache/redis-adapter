@@ -9,9 +9,9 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Cache\Adapter\PhpRedis\Tests;
+namespace Cache\Adapter\Redis\Tests;
 
-use Cache\Adapter\PhpRedis\PhpRedisCachePool;
+use Cache\Adapter\Redis\RedisCachePool;
 use Cache\IntegrationTests\CachePoolTest as BaseTest;
 
 class IntegrationPoolTest extends BaseTest
@@ -20,7 +20,7 @@ class IntegrationPoolTest extends BaseTest
 
     public function createCachePool()
     {
-        return new PhpRedisCachePool($this->getClient());
+        return new RedisCachePool($this->getClient());
     }
 
     private function getClient()
