@@ -6,7 +6,7 @@ php:
   - hhvm
 
 services:
-  - phpredis-server
+  - redis-server
 
 matrix:
   fast_finish: true
