@@ -15,8 +15,10 @@ before_install:
     - pip install --user codecov
 
 before_script:
-    - travis_retry composer self-update
-    - travis_retry composer install --prefer-source --no-interaction
+  - mkdir -p ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d
+  - echo "extension=redis.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
+  - travis_retry composer self-update
+  - travis_retry composer install --prefer-source --no-interaction
 
 script:
     - php -dzend_extension=xdebug.so vendor/bin/phpunit --coverage-clover=coverage.xml
