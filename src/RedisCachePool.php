@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of php-cache\phpredis-adapter package.
+ * This file is part of php-cache\redis-adapter package.
  *
  * (c) 2015-2015 Aaron Scherer <aequasi@gmail.com>, Tobias Nyholm <tobias.nyholm@gmail.com>
  *
@@ -52,6 +52,7 @@ class RedisCachePool extends AbstractCachePool implements HierarchicalPoolInterf
         $keyString = $this->getHierarchyKey($key, $path);
         $this->cache->incr($path);
         $this->clearHierarchyKeyCache();
+
         return $this->cache->del($keyString) >= 0;
     }
 
