@@ -11,25 +11,9 @@
 
 namespace Cache\Adapter\Redis\Tests;
 
-use Cache\Adapter\Redis\RedisCachePool;
 use Cache\IntegrationTests\CachePoolTest as BaseTest;
 
 class IntegrationPoolTest extends BaseTest
 {
-    private $client = null;
-
-    public function createCachePool()
-    {
-        return new RedisCachePool($this->getClient());
-    }
-
-    private function getClient()
-    {
-        if ($this->client === null) {
-            $this->client = new \Redis();
-            $this->client->connect('127.0.0.1', 6379);
-        }
-
-        return $this->client;
-    }
+    use CreatePoolTrait;
 }

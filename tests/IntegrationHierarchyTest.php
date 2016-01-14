@@ -11,9 +11,9 @@
 
 namespace Cache\Adapter\Redis\Tests;
 
-use Cache\IntegrationTests\TaggableCachePoolTest;
+use Cache\IntegrationTests\HierarchicalCachePoolTest;
 
-class IntegrationTagTest extends TaggableCachePoolTest
+class IntegrationHierarchyTest extends HierarchicalCachePoolTest
 {
     use CreatePoolTrait;
 }
