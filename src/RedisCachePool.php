@@ -39,7 +39,7 @@ class RedisCachePool extends AbstractCachePool implements HierarchicalPoolInterf
     protected function fetchObjectFromCache($key)
     {
         if (false === $result = unserialize($this->cache->get($this->getHierarchyKey($key)))) {
-           return [false, null];
+            return [false, null];
         }
 
         return $result;
@@ -62,7 +62,7 @@ class RedisCachePool extends AbstractCachePool implements HierarchicalPoolInterf
 
     protected function storeItemInCache($key, CacheItemInterface $item, $ttl)
     {
-        $key = $this->getHierarchyKey($key);
+        $key  = $this->getHierarchyKey($key);
         $data = serialize([true, $item->get()]);
         if ($ttl === null) {
             return $this->cache->set($key, $data);
