@@ -38,7 +38,11 @@ class RedisCachePool extends AbstractCachePool implements HierarchicalPoolInterf
 
     protected function fetchObjectFromCache($key)
     {
-        return unserialize($this->cache->get($this->getHierarchyKey($key)));
+        if (false === $result = unserialize($this->cache->get($this->getHierarchyKey($key)))) {
+            return [false, null];
+        }
+
+        return $result;
     }
 
     protected function clearAllObjectsFromCache()
@@ -58,12 +62,13 @@ class RedisCachePool extends AbstractCachePool implements HierarchicalPoolInterf
 
     protected function storeItemInCache($key, CacheItemInterface $item, $ttl)
     {
-        $key = $this->getHierarchyKey($key);
+        $key  = $this->getHierarchyKey($key);
+        $data = serialize([true, $item->get()]);
         if ($ttl === null) {
-            return $this->cache->set($key, serialize($item));
+            return $this->cache->set($key, $data);
         }
 
-        return $this->cache->setex($key, $ttl, serialize($item));
+        return $this->cache->setex($key, $ttl, $data);
     }
 
     protected function getValueFormStore($key)
