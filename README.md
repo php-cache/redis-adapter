@@ -22,3 +22,7 @@ $client = new \Redis();
 $client->connect('127.0.0.1', 6379);
 $pool = new RedisCachePool($client);
 ```
+
+### Contribute
+
+Contributions are very welcome! Send us a pull request or report any issues you find on the [issue tracker](https://github.com/php-cache/issues/issues).
