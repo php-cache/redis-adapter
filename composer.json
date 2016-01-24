@@ -12,7 +12,7 @@
         "redis",
         "tag"
     ],
-    "homepage": "https://github.com/php-cache/redis-adapter",
+    "homepage": "http://www.php-cache.com",
     "authors":
     [
         {
