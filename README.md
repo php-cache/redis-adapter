@@ -25,4 +25,4 @@ $pool = new RedisCachePool($client);
 
 ### Contribute
 
-Contributions are very welcome! Send us a pull request or report any issues you find on the [issue tracker](https://github.com/php-cache/issues/issues).
+Contributions are very welcome! Send us a pull request or report any issues you find on the [issue tracker](http://issues.php-cache.com).
