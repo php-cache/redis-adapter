@@ -80,12 +80,20 @@ class RedisCachePool extends AbstractCachePool implements HierarchicalPoolInterf
     protected function storeItemInCache(CacheItemInterface $item, $ttl)
     {
         $key  = $this->getHierarchyKey($item->getKey());
-        $data = serialize([true, $item->get(), $item->getTags()]);
-        if ($ttl === null || $ttl === 0) {
-            return $this->cache->set($key, $data);
+
+        $data = [true, $item->get()];
+
+        if ($item instanceof TaggableItemInterface) {
+            $data[] = $item->getTags();
         }
 
-        return $this->cache->setex($key, $ttl, $data);
+        $serialized = serialize($data);
+
+        if ($ttl === null || $ttl === 0) {
+            return $this->cache->set($key, $serialized);
+        }
+
+        return $this->cache->setex($key, $ttl, $serialized);
     }
 
     /**
