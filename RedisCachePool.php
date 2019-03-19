@@ -51,7 +51,7 @@ class RedisCachePool extends AbstractCachePool implements HierarchicalPoolInterf
      */
     protected function fetchObjectFromCache($key)
     {
-        $data = gzuncompress($this->cache->get($this->getHierarchyKey($key))) ?: "";
+        $data = gzdecode($this->cache->get($this->getHierarchyKey($key))) ?: "";
         if (false === $result = unserialize($data)) {
             return [false, null, [], null];
         }
@@ -126,7 +126,7 @@ class RedisCachePool extends AbstractCachePool implements HierarchicalPoolInterf
     {
         $key  = $this->getHierarchyKey($item->getKey());
         $data = serialize([true, $item->get(), $item->getTags(), $item->getExpirationTimestamp()]);
-        $data = gzcompress($data);
+        $data = gzencode($data);
         if ($ttl === null || $ttl === 0) {
             return $this->cache->set($key, $data);
         }
